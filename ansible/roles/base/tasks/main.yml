@@ -1,0 +1,17 @@
+---
+  - name: Install base packages
+    apt: name={{ item.name }}
+    with_items: packages
+
+  - name: Copy package customizations
+    copy: src={{item.key}} dest={{item.value}}
+    with_subelements:
+        - packages
+        - files
+
+  #- name: Install tmux config
+    #copy: src=tmux.conf dest=/etc/tmux.conf mode=0644 owner=root group=root
+
+  #- name: Install users
+    #user: name={{ item.name }} groups={{ item.groups }} append=yes state=present generate_ssh_key=yes ssh_key_bits=1048
+    #with_items: users

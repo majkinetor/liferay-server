@@ -1,0 +1,10 @@
+---
+  - name: Install ELRepo
+    yum: name=http://www.elrepo.org/elrepo-release-6-6.el6.elrepo.noarch.rpm
+
+  - name: Install mainline kernel
+    yum: name=kernel-ml enablerepo=elrepo-kernel
+    notify: restart server
+
+  - name: Change GRUB default
+    lineinfile: dest=/etc/grub.conf regexp=^default= line=default=0

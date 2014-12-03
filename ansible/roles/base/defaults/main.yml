@@ -1,0 +1,8 @@
+---
+users:
+  #- { name: 'vagrant', groups: 'sudo' }
+packages:
+  - name: python-pycurl
+  - name: tmux
+    files:
+        tmux.conf: /etc/tmux/conf

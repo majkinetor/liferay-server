@@ -1,0 +1,1 @@
+redserver  ansible_ssh_host=10.32.34.119

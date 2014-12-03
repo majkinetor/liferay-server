@@ -1,0 +1,11 @@
+---
+- hosts: liferay
+  gather_facts: no
+  user: root
+
+  vars:
+
+  roles:
+    - { role: base,           tags: base }
+    #- { role: docker,         tags: docker }
+
