@@ -1,13 +1,13 @@
 ---
   - name: Install base packages
-    apt: name={{ item.name }}
+    apt: name={{ item.name }} update_cache=yes
     with_items: packages
 
-  - name: Copy package customizations
-    copy: src={{item.key}} dest={{item.value}}
-    with_subelements:
-        - packages
-        - files
+  #- name: Copy package customizations
+    #copy: src={{item.key}} dest={{item.value}}
+    #with_subelements:
+        #- packages
+        #- files
 
   #- name: Install tmux config
     #copy: src=tmux.conf dest=/etc/tmux.conf mode=0644 owner=root group=root
