@@ -1,0 +1,5 @@
+---
+    - include: ../../service_tasks.yml ss={{service}} extra_opts=''
+
+    - name: Create database scripts
+      template: src=create-db.j2 dest=/bin/create-db mode=0755 owner=root group=root

@@ -1,0 +1,5 @@
+---
+ - name: Create redmine database and user if needed
+   command: create-db {{db.name}} {{db.user}} {{db.pass}}
+
+ - include: ../../service_tasks.yml ss={{service}} extra_opts=''

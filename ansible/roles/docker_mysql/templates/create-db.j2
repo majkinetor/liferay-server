@@ -1,0 +1,14 @@
+#!/bin/bash
+# {{ansible_managed}}
+
+DB_NAME=$1
+DB_USER=$2
+DB_PASS=$3
+
+sql=$(cat <<eos
+    CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` DEFAULT CHARACTER SET \`utf8\` COLLATE \`utf8_unicode_ci\`;
+    GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO '${DB_USER}' IDENTIFIED BY '${DB_PASS}';
+eos
+)
+
+docker run -it --rm --volumes-from={{service.name}} {{service.container}}:{{service.version}} mysql -u root -e "$sql"

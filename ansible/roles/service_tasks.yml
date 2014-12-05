@@ -1,0 +1,14 @@
+---
+  - debug: var=ss
+
+  - name: Make sure docker service is running
+    service: name=docker state=started
+
+  - name: Pull docker image
+    command: docker pull {{ss.container}}:{{ss.version}}
+
+  - name: Install docker container service
+    template: src=initd_service.j2 dest=/etc/init.d/{{ ss.name }} mode=744
+
+  - name: Enable service and set its state
+    service: name={{ ss.name }} state={{ ss.state }} enabled=yes

@@ -1,0 +1,12 @@
+---
+service:
+    name:           mysql
+    state:          started
+    start_priority: 97
+    end_priority:   50
+    container:      sameersbn/mysql
+    version:        latest
+    options: >
+        "
+        -v /opt/mysql/data:/var/lib/mysql
+        "

@@ -1,0 +1,18 @@
+---
+service:
+    name:           liferay
+    state:          started
+    start_priority: 97
+    end_priority:   50
+    container:      snasello/liferay-6.2
+    version:        6.2-ce-ga2
+    options: >
+        "
+            --link mysql:db_lep
+            -p 80:8080
+            -e DB_TYPE=MYSQL
+        "
+db:
+    name: lportal
+    user: lportal
+    pass: lportal

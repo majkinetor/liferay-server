@@ -19,6 +19,11 @@ Vagrant.configure("2") do |cfg|
             v.cpus = 2
         end
 
+        c.vm.provision "shell", inline: <<-eos
+            sed 's/^PermitRootLogin.*$/PermitRootLogin yes/'                   -i /etc/ssh/sshd_config
+            service ssh restart
+        eos
+
         cfg.vbguest.auto_update = false if Vagrant.has_plugin?("vagrant-vbguest")
     end
 

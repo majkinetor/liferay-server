@@ -1,0 +1,80 @@
+#!/bin/bash
+# description: Docker container executioner service
+# processname: {{ss.name}}
+# chkconfig: 2345 {{ss.start_priority}} {{ss.end_priority}}
+#
+# BEGIN INIT INFO
+# Provides:       {{ss.name}}
+# Required-Start: docker
+# Required-Stop:
+# Should-Start:
+# Should-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop:  0 1 6
+# Short-Description: start and stop {{ss.name}}
+# Description: Daemon for {{ss.name}}
+# END INIT INFO
+#
+# {{ansible_managed}}
+#
+# To unable this service you can use chkconfig --add <servicename>
+#
+
+# Source function library.
+. /etc/init.d/functions
+# Load env for proxy etc..
+. /etc/environment
+
+NAME={{ss.name}}
+CONTAINER={{ss.container}}:{{ss.version}}
+CONTAINER_OPTS={{ss.options}}
+
+start() {
+        echo -n "Starting $CONTAINER as $NAME: "
+        /usr/bin/docker rm $NAME 2>/dev/null
+        /usr/bin/docker run --name=$NAME -d $CONTAINER_OPTS {{extra_opts}} $CONTAINER
+
+        RETVAL=$?
+        touch /var/lock/subsys/$NAME
+        return $RETVAL
+}
+
+stop() {
+        echo -n "Shutting down $NAME: "
+        /usr/bin/docker kill $NAME
+        RETVAL=$?
+        rm -f /var/lock/subsys/$NAME
+        return $RETVAL
+}
+
+status() {
+        echo -n "Checking $NAME status: "
+        /usr/bin/docker top $NAME 
+        RETVAL=$?
+        return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status|reload|restart[|probe]"
+        exit 1
+        ;;
+esac
+exit $?
