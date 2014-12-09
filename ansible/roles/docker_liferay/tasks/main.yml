@@ -1,7 +1,7 @@
 ---
  - include: ../../service_tasks.yml ss={{service}} extra_opts=''
 
- - name: Create redmine database and user if needed
+ - name: Create liferay database and user if needed
    command: create-db {{db.name}} {{db.user}} {{db.pass}}
 
  - name: Start liferay service
