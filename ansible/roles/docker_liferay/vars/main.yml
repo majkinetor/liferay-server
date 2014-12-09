@@ -1,7 +1,7 @@
 ---
 service:
     name:           liferay
-    state:          started
+    state:          stopped
     start_priority: 97
     end_priority:   50
     container:      snasello/liferay-6.2
