@@ -24,7 +24,7 @@ Access
 Administration
 --------------
 ```sh
-        sudo sudo
+        sudo su
 
         # Show running images (should list mysql & liferay)
         docker ps 
