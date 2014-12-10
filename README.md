@@ -1,7 +1,12 @@
-Cross platform Liferay deploy using Docker & Ansible.
+Cross platform Liferay deploy using Docker & Ansible. 
+
+**NOTE**: This is a work in progress.
 
 Requirements
-------------
+============
+
+For development
+---------------
 
 - VirtualBox 1.20+
 - Vagrant 1.65+
@@ -9,21 +14,31 @@ Requirements
 - If you have proxy: `vagrant plugin install vagrant-proxyconf`
 
 
-Provision
----------
+For production server
+---------------------
+
+- Ubuntu Utopic
+- SSH with root ssh access for provisioning
+- Ansible-master server to execute playbooks (you can also use the provided virtual machine)
+
+Install
+=======
+
+    git clone https://github.com/majkinetor/liferay-server.github
+    cd liferay-server
 
     vagrant up
     vagrant ssh ansible-master -- -t "cd /ansible && ansible-playbook -i hosts_vagrant site.yml"
 
-Access
-------
+Usage
+======
 
-    URL:  http://192.168.0.20 (or http://liferay with vagrant-hostsupdater plugin)
-    User: test@liferay.com 
-    Pass: test
+ - **URL**: http://192.168.0.20 (or http://liferay with vagrant-hostsupdater plugin)
+ - **User**: test@liferay.com 
+ - **Pass**: test
 
-Administration
---------------
+Administration basics
+---------------------
 
 ```sh
 sudo su
@@ -40,7 +55,7 @@ cd /var/liferay-home
 ```
 
 TODO
-----
+====
 
 - Detailed documentation
 - Fix few less important errors within liferay portal.
