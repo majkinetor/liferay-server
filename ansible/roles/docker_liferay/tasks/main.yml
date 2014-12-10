@@ -7,3 +7,7 @@
  - name: Start liferay service
    service: name=liferay state=started
 
+ - name: Make sure liferay helpers are present
+   template: src=liferay_helpers.sh.j2 dest=/etc/profile.d/liferay_helpers.sh
+             mode=0755 owner=root group=root
+

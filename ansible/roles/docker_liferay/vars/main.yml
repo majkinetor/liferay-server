@@ -9,8 +9,14 @@ service:
     options: >
         "
             --link mysql:db_lep
+            -v /opt/liferay/home:/var/liferay-home
+            -v /opt/liferay/:/opt/liferay-portal-6.2-ce-ga2
             -p 80:8080
             -e DB_TYPE=MYSQL
+            -e http_proxy=$http_proxy
+            -e https_proxy=$https_proxy
+            -e ftp_proxy=$ftp_proxy
+            -e no_proxy=$no_proxy
         "
 db:
     name: lportal

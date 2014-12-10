@@ -1,0 +1,12 @@
+NAME={{service.name}}
+CONTAINER={{service.container}}:{{service.version}}
+CONTAINER_OPTS={{service.options}}
+
+function e() { docker exec -it $NAME /bin/bash }
+function r() {
+    /usr/bin/docker run -it         \
+        --name=$NAME                \
+        $CONTAINER_OPTS             \
+        $CONTAINER                  \
+        --entrypoint=/bin/bash -i
+}

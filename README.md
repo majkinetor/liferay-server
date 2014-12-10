@@ -24,17 +24,23 @@ Access
 Administration
 --------------
 ```sh
-        sudo su
+sudo su
 
-        # Show running images (should list mysql & liferay)
-        docker ps 
+# Show running images (should list mysql & liferay)
+docker ps 
 
-        # Enter liferay images
-        docker exec -it liferay /bin/bash
+# Enter liferay images to examine files, can't be used to change
+docker exec -it liferay /bin/bash
 
-        # Inside docker container go to liferay dir
-        cd /opt/liferay-portal-6.2-ce-ga2/
+cd /opt/liferay-portal-6.2-ce-ga2/  # Inside docker container go to liferay dir
+tomcat-7.0.42/bin/catalina.sh run   # Start the server
+tomcat-7.0.42/bin/catalina.sh stop  # Stop the server
 ```
+
+Links
+-----
+
+- [Liferay localisation](https://www.liferay.com/community/forums/-/message_boards/message/10778156)
 
 TODO
 ----

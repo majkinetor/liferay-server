@@ -33,6 +33,7 @@ CONTAINER_OPTS={{ss.options}}
 start() {
         echo -n "Starting $CONTAINER as $NAME: "
         /usr/bin/docker rm $NAME 2>/dev/null
+        echo docker run --name=$NAME -d $CONTAINER_OPTS {{extra_opts}} $CONTAINER
         /usr/bin/docker run --name=$NAME -d $CONTAINER_OPTS {{extra_opts}} $CONTAINER
 
         RETVAL=$?
