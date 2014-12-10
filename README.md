@@ -1,28 +1,30 @@
-This is work in progress! It should work, however, it is not extensively tested. 
-
+Cross platform Liferay deploy using Docker & Ansible.
 
 Requirements
 ------------
 
 - VirtualBox 1.20+
 - Vagrant 1.65+
-  - [Git for Windows](https://msysgit.github.io/) (for `vagrant ssh`, make sure git/bin is in PATH)
-- `vagrant plugin install vagrant-proxyconf`
+  - If on Windows: [Git for Windows](https://msysgit.github.io/) (req. for `vagrant ssh` to work on Windows, make sure .../Git/bin is in the PATH)
+- If you have proxy: `vagrant plugin install vagrant-proxyconf`
 
 
 Provision
 ---------
-        vagrant up
-        vagrant ssh ansible-master -- -t "cd /ansible && ansible-playbook -i hosts_vagrant site.yml"
+
+    vagrant up
+    vagrant ssh ansible-master -- -t "cd /ansible && ansible-playbook -i hosts_vagrant site.yml"
 
 Access
 ------
-        URL:  http://192.168.0.20 (or http://liferay with vagrant-hostsupdater plugin)
-        User: test@liferay.com 
-        Pass: test
+
+    URL:  http://192.168.0.20 (or http://liferay with vagrant-hostsupdater plugin)
+    User: test@liferay.com 
+    Pass: test
 
 Administration
 --------------
+
 ```sh
 sudo su
 
