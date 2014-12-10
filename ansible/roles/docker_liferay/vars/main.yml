@@ -11,6 +11,10 @@ service:
             --link mysql:db_lep
             -p 80:8080
             -e DB_TYPE=MYSQL
+            -e http_proxy=$http_proxy
+            -e https_proxy=$https_proxy
+            -e ftp_proxy=$ftp_proxy
+            -e no_proxy=$no_proxy
         "
 db:
     name: lportal
