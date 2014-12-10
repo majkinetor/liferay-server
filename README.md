@@ -24,16 +24,17 @@ Access
 Administration
 --------------
 ```sh
-        sudo su
+sudo su
 
-        # Show running images (should list mysql & liferay)
-        docker ps 
+# Show running images (should list mysql & liferay)
+docker ps 
 
-        # Enter liferay images
-        docker exec -it liferay /bin/bash
+# Enter liferay images
+docker exec -it liferay /bin/bash
 
-        # Inside docker container go to liferay dir
-        cd /opt/liferay-portal-6.2-ce-ga2/
+# Inside docker container go to liferay dir
+cd /opt/liferay-portal-6.2-ce-ga2/
+cd /var/liferay-home
 ```
 
 TODO
