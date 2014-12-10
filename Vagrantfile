@@ -1,9 +1,10 @@
 PROXY  = ENV['http_proxy']
-PUBLIC = false
+PUBLIC = true
 
 Vagrant.configure("2") do |cfg|
     cfg.vm.box = "utopic"
     cfg.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box"
+    cfg.vm.network "public_network" if PUBLIC
 
     cfg.vm.define 'liferay' do |c|
         c.vm.hostname = 'liferay'
